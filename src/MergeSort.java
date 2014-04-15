@@ -15,7 +15,7 @@ public class MergeSort {
 			int mid = (start + finish)/2;
 			mergeSort(arr, start, mid);
 			mergeSort(arr, mid, finish);
-			int[] mergedArr = new int[finish-start];
+			int[] mergedArr = new int[arr.length];
 			int i0 = start;
 			int i1 = mid;
 			for(int i = start; i < finish; i++) {
