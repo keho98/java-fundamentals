@@ -10,7 +10,7 @@ public class MergeSort {
 		for(int i = start; i < finish; i++) arr1[i] = arr0[i];
 	}
 	static void mergeSort(int[] arr, int start, int finish) {
-		if(start < finish) {
+		if(finish - start > 1) {
 			//String truncation automatically floors division
 			int mid = (start + finish)/2;
 			mergeSort(arr, start, mid);
@@ -19,8 +19,24 @@ public class MergeSort {
 			int i0 = start;
 			int i1 = mid;
 			for(int i = start; i < finish; i++) {
-				
+				if (i0 == mid) {
+					mergedArr[i] = arr[i1];
+					i1++;
+				}
+				else if (i1 == finish) {
+					mergedArr[i] = arr[i0];
+					i0++;
+				}
+				else if(arr[i0] < arr[i1]) {
+					mergedArr[i] = arr[i0];
+					i0++;
+				}
+				else {
+					mergedArr[i] = arr[i1];
+					i1++;
+				}
 			}
+			copy(mergedArr, arr, start, finish);
 		}
 	}
 	public static void main(String[] args) {
