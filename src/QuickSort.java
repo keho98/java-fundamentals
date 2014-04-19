@@ -3,12 +3,28 @@ import java.util.Scanner;
 
 public class QuickSort {
 	static void sort(int[] arr) {
-		Random r = new Random();
-		int pivotIndex = r.nextInt(arr.length);
-		partition(arr, pivotIndex);
+		quickSort(arr, 0, arr.length);
 	}
-	static void partition(int[] arr, int pivotIndex) {
-		
+	static void quickSort(int[] arr, int start, int finish) {
+		if(finish - start > 1) {
+			Random r = new Random();
+			int pivotIndex = r.nextInt(finish - start) + start;
+			partition(arr, pivotIndex, start, finish);
+		}
+	}
+	static void partition(int[] arr, int pivotIndex, int start, int finish) {
+		int less = start;
+		int more = start;
+		for(int i = start; i < finish; i++){
+			if(arr[i] >= arr[pivotIndex]) {
+				more++;
+			}
+			else if(arr[i] < arr[pivotIndex]){
+				//swap and increment both
+				less++;
+				more++;
+			}
+		}
 	}
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
