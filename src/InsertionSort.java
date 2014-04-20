@@ -7,7 +7,6 @@ public class InsertionSort extends Sort {
 				arr[i-1] = tmp;
 				i--;
 			}
-		}
-		
+		}	
 	}
 }
