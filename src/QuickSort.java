@@ -1,7 +1,6 @@
 import java.util.Random;
-import java.util.Scanner;
 
-public class QuickSort {
+public class QuickSort extends Sort {
 	static void swap(int[] arr, int i0, int i1) {
 		int tmp = arr[i0];
 		arr[i0] = arr[i1];
@@ -40,20 +39,5 @@ public class QuickSort {
 		int newPivotIndex = less - 1;
 		swap(arr, start, newPivotIndex);
 		return newPivotIndex;
-	}
-	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-		int testCount = in.nextInt();
-		for(int i = 0; i < testCount; i++) {
-			int n = in.nextInt();
-			int[] arr = new int[n];
-			for(int j = 0; j < n; j++) arr[j] = in.nextInt();
-			sort(arr);
-			for (int j = 0; j < n; j++) {
-			      if (j > 0) System.out.print(" ");
-			      System.out.print(arr[j]);
-			}
-			System.out.println();	
-		}
 	}
 }
