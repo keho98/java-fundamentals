@@ -9,8 +9,12 @@ public class tournament {
 		arr[i0] = arr[i1];
 		arr[i1] = tmp;
 	}
-	static void sort(int[] arr) {
+	static void calculateRanking(int[][] arr) {
 		quickSort(arr, 0, arr.length);
+	}
+	
+	static int calculateRank(int index0, int index1) {
+		return 0;
 	}
 	static int getPivot(int start, int finish) {
 		Random r = new Random();
@@ -48,12 +52,16 @@ public class tournament {
 		int testCount = in.nextInt();
 		for(int i = 0; i < testCount; i++) {
 			int n = in.nextInt();
-			int[] arr = new int[n];
-			for(int j = 0; j < n; j++) arr[j] = in.nextInt();
-			sort(arr);
+			int[][] entrantMatrix = new int[n][n];
+			for(int j = 0; j < n; j++) {
+				for(int k = 0; k < n; k++) {
+					entrantMatrix[j][k] = in.nextInt();
+				}
+			}
+			calculateRanking(entrantMatrix);
 			for (int j = 0; j < n; j++) {
 			      if (j > 0) System.out.print(" ");
-			      System.out.print(arr[j]);
+			      System.out.print(entrantMatrix[j]);
 			}
 			System.out.println();	
 		}

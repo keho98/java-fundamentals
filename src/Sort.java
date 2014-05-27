@@ -2,6 +2,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Sort {
+	
 	static void sort(int[] arr) {
 		Arrays.sort(arr);
 	}
