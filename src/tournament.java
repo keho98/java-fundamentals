@@ -3,18 +3,19 @@ import java.util.Random;
 import java.util.Scanner;
 
 
-public class tournament {
+public class tournament{
+	static int[][] entrantMatrix;
 	static void swap(int[] arr, int i0, int i1) {
 		int tmp = arr[i0];
 		arr[i0] = arr[i1];
 		arr[i1] = tmp;
 	}
-	static void calculateRanking(int[][] arr) {
-		quickSort(arr, 0, arr.length);
+	static void calculateRanking(int[][] entrantData, int[] entrants) {
+		//
 	}
 	
-	static int calculateRank(int index0, int index1) {
-		return 0;
+	static boolean compare(int index0, int index1) {
+		return index0 < index1;
 	}
 	static int getPivot(int start, int finish) {
 		Random r = new Random();
@@ -33,10 +34,12 @@ public class tournament {
 		int more;
 		int less = more = start + 1;
 		for(int i = start + 1; i < finish; i++){
-			if(arr[i] >= arr[start]) {
+			int elementIndex0 = arr[i];
+			int elementIndex1 = arr[start];
+			if(!compare(entrantMatrix[elementIndex0][elementIndex1], entrantMatrix[elementIndex1][elementIndex0])) {
 				more++;
 			}
-			else if(arr[i] < arr[start]){
+			else if(compare(entrantMatrix[elementIndex1][elementIndex0], entrantMatrix[elementIndex0][elementIndex1])){
 				//swap and increment both
 				swap(arr, more, less);
 				less++;
@@ -52,16 +55,18 @@ public class tournament {
 		int testCount = in.nextInt();
 		for(int i = 0; i < testCount; i++) {
 			int n = in.nextInt();
-			int[][] entrantMatrix = new int[n][n];
+			entrantMatrix = new int[n][n];
+			int[] entrants = new int[n];
 			for(int j = 0; j < n; j++) {
+				entrants[j] = j;
 				for(int k = 0; k < n; k++) {
 					entrantMatrix[j][k] = in.nextInt();
 				}
 			}
-			calculateRanking(entrantMatrix);
+			calculateRanking(entrantMatrix, entrants);
 			for (int j = 0; j < n; j++) {
 			      if (j > 0) System.out.print(" ");
-			      System.out.print(entrantMatrix[j]);
+			      System.out.print(entrants[j] + 1);
 			}
 			System.out.println();	
 		}
